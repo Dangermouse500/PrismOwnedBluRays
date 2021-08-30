@@ -21,6 +21,8 @@ namespace PrismOwnedBluRays.ViewModels
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
+
+            // Set page title dynamically here if possible?
         }
 
         public virtual void Initialize(INavigationParameters parameters)

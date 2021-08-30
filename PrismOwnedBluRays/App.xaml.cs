@@ -28,6 +28,8 @@ namespace PrismOwnedBluRays
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShowOwnedBluRays, ShowOwnedBluRaysViewModel>();
+            containerRegistry.RegisterForNavigation<AddBluRay, AddBluRayViewModel>();
         }
     }
 }

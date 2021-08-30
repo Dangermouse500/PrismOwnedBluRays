@@ -1,9 +1,10 @@
-﻿
+﻿using Xamarin.Forms;
+
 namespace PrismOwnedBluRays.Views
 {
-    public partial class MainPage
+    public partial class AddBluRay : ContentPage
     {
-        public MainPage()
+        public AddBluRay()
         {
             InitializeComponent();
         }

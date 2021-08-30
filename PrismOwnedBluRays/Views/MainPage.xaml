@@ -2,10 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrismOwnedBluRays.Views.MainPage"
+             xmlns:prism="http://prismlibrary.com"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <StackLayout Margin="20, 35, 20, 25">
+        
+        <Image Source="blu_ray_logo.png" />
+
+        <Button Text="Add blu ray" Style="{StaticResource buttonStyle}"
+                Command="{prism:NavigateTo 'AddBluRay'}" />
+
+        <Button Text="Show owned blu rays" Style="{StaticResource buttonStyle}"
+                Command="{prism:NavigateTo 'ShowOwnedBluRays'}" />
+
     </StackLayout>
 
 </ContentPage>
