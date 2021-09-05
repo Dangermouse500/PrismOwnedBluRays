@@ -16,7 +16,10 @@ namespace PrismOwnedBluRays.ViewModels
         public ObservableCollection<BluRay> OwnedBluRays
         {
             get { return _ownedBluRays; }
-            set { _ownedBluRays = value; }
+            set {
+                _ownedBluRays = value;
+                //OnPropertyChanged("BluRays");
+            }
         }
 
         //private DelegateCommand _navigateCommand;

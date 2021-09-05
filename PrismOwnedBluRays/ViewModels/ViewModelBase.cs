@@ -22,6 +22,7 @@ namespace PrismOwnedBluRays.ViewModels
         {
             NavigationService = navigationService;
             BluRayRepositoryService = bluRayRepositoryService;
+
             // Set page title dynamically here if possible?
         }
 
