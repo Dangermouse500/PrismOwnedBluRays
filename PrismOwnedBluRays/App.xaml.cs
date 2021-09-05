@@ -1,5 +1,6 @@
 using Prism;
 using Prism.Ioc;
+using PrismOwnedBluRays.Repositories;
 using PrismOwnedBluRays.ViewModels;
 using PrismOwnedBluRays.Views;
 using Xamarin.Essentials.Implementation;
@@ -25,6 +26,8 @@ namespace PrismOwnedBluRays
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+
+            containerRegistry.RegisterSingleton<IBluRayRepository, BluRayRepository>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();

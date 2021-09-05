@@ -1,15 +1,13 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using PrismOwnedBluRays.Repositories;
 
 namespace PrismOwnedBluRays.ViewModels
 {
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+        protected IBluRayRepository BluRayRepositoryService { get; private set; }
 
         private string _title;
         public string Title
@@ -18,10 +16,12 @@ namespace PrismOwnedBluRays.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService,
+                             IBluRayRepository bluRayRepositoryService
+            )
         {
             NavigationService = navigationService;
-
+            BluRayRepositoryService = bluRayRepositoryService;
             // Set page title dynamically here if possible?
         }
 

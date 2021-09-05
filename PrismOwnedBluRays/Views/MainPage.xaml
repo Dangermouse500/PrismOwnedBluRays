@@ -5,16 +5,7 @@
              xmlns:prism="http://prismlibrary.com"
              Title="{Binding Title}">
 
-    <StackLayout Margin="20, 35, 20, 25">
-        
-        <Image Source="blu_ray_logo.png" />
+    <Grid>        <Grid.RowDefinitions>            <RowDefinition Height="0.66*"/>            <RowDefinition Height="0.33*"/>        </Grid.RowDefinitions>        <Grid.ColumnDefinitions>            <ColumnDefinition Width="0.5*"/>            <ColumnDefinition Width="0.5*"/>        </Grid.ColumnDefinitions>        <Image Source="blu_ray_logo.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>        <Button Text="+" Style="{StaticResource buttonStyle}"                Command="{prism:NavigateTo 'AddBluRay'}" Grid.Row="1" Grid.Column="0"/>        <Button Text="Show owned blu rays" Style="{StaticResource buttonStyle}"                Command="{prism:NavigateTo 'ShowOwnedBluRays'}" Grid.Row="1" Grid.Column="1"/>    </Grid>
 
-        <Button Text="Add blu ray" Style="{StaticResource buttonStyle}"
-                Command="{prism:NavigateTo 'AddBluRay'}" />
-
-        <Button Text="Show owned blu rays" Style="{StaticResource buttonStyle}"
-                Command="{prism:NavigateTo 'ShowOwnedBluRays'}" />
-
-    </StackLayout>
 
 </ContentPage>
