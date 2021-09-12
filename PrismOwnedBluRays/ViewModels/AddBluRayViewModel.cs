@@ -4,8 +4,6 @@ using Prism.Navigation;
 using PrismOwnedBluRays.API;
 using PrismOwnedBluRays.Models;
 using PrismOwnedBluRays.Repositories;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace PrismOwnedBluRays.ViewModels
 {
@@ -13,23 +11,20 @@ namespace PrismOwnedBluRays.ViewModels
     {
         private INavigationService _navigationService;
         private IBluRayRepository _bluRayRepository;
-        private DelegateCommand _navigateCommand;
+        private string _bluRayTitleEnteredByUser;
+        public string BluRayTitleEnteredByUser
+        {
+            get { return _bluRayTitleEnteredByUser; }
+            set
+            {
+                SetProperty(ref _bluRayTitleEnteredByUser, value);
+            }
+        }
 
-        //private List<BluRay> _bluRayTitlesReturnedFromSearch;
-        //public List<BluRay> BluRayTitlesReturnedFromSearch
-        //{
-        //    get { return _bluRayTitlesReturnedFromSearch; }
-        //    set
-        //    {
-        //        _bluRayTitlesReturnedFromSearch = value;
-        //        //OnPropertyChanged("BluRays");
-        //    }
-        //}
+        public DelegateCommand GoToMainMenuCmd { get; set; }
+        public DelegateCommand SearchForBluRayTitleCmd { get; set; }
 
         public BluRay BluRayTitleReturnedFromSearch { get; set; }
-
-        public DelegateCommand NavigateCommand =>
-            _navigateCommand ?? (_navigateCommand = new DelegateCommand(ExecuteNavigateCommand));
 
         public AddBluRayViewModel(INavigationService navigationService,
                                   IBluRayRepository bluRayRepository)
@@ -37,18 +32,19 @@ namespace PrismOwnedBluRays.ViewModels
             _navigationService = navigationService;
             _bluRayRepository = bluRayRepository;
 
-            // This needs changing to a button search event click
-            SearchForBluRayTitles();
+            GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
+
+            SearchForBluRayTitleCmd = new DelegateCommand(SearchForBluRayTitles);
         }
 
         private async void SearchForBluRayTitles()
         {
-            BluRayTitleReturnedFromSearch = await OmdbApi.GetBluRayTitle("Joker");
+            BluRayTitleReturnedFromSearch = await OmdbApi.GetBluRayTitle(BluRayTitleEnteredByUser);
         }
 
-        private async void ExecuteNavigateCommand()
+        private void GoToMainMenu()
         {
-            await _navigationService.GoBackAsync();
+            _navigationService.NavigateAsync("MainPage");
         }
     }
 }

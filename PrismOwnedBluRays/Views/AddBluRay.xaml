@@ -9,8 +9,14 @@
 
         <Label Text="Add Blu Ray" />
 
+        <Label Text="Please enter the title of the blu ray below" />
+        <Entry Text="{Binding BluRayTitleEnteredByUser}" />
+
+        <Button Text="Find" Style="{StaticResource buttonStyle}"
+                Command="{Binding SearchForBluRayTitleCmd}" />
+
         <Button Text="Main menu" Style="{StaticResource buttonStyle}"
-                Command="{prism:NavigateTo 'MainPage'}" />
+                Command="{Binding GoToMainMenuCmd}" />
 
     </StackLayout>
 
