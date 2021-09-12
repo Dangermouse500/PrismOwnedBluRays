@@ -1,31 +1,34 @@
-﻿using PrismOwnedBluRays.Models;
+﻿using PrismOwnedBluRays.Database;
+using PrismOwnedBluRays.Models;
+using SQLite;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace PrismOwnedBluRays.Repositories
 {
     public class BluRayRepository : IBluRayRepository
     {
+        private SQLiteConnection _dbConnection;
+
+        public BluRayRepository()
+        {
+            _dbConnection = DependencyService.Get<ILocalDataService>().SetupDatabaseAndGetConnection();
+            _dbConnection.CreateTable<BluRay>();
+        }
+
         public List<BluRay> GetOwnedBluRays()
         {
-            var listOfOwnedBluRays = new List<BluRay>();
+            return _dbConnection.Table<BluRay>().ToList();
+        }
 
-            listOfOwnedBluRays.Add(new BluRay
-            {
-                BluRayId = 1,
-                BluRayTitle = "Batman", BluRayActors = "Michael Keaton, Jack Nicholson", BluRayDirector = "Tim Burton", BluRayGenre = "Action", BluRayYearOfRelease = "1989"
-            });
+        public void AddBluRay(BluRay bluRay)
+        {
+            _dbConnection.Insert(bluRay);
+        }
 
-            listOfOwnedBluRays.Add(new BluRay
-            {
-                BluRayId = 2,
-                BluRayTitle = "Transformers",
-                BluRayActors = "Megan Fox, Shia LeBouf",
-                BluRayDirector = "Michael Bay",
-                BluRayGenre = "Action",
-                BluRayYearOfRelease = "2001"
-            });
-
-            return listOfOwnedBluRays;
+        public void DeleteBluRay(BluRay bluRay)
+        {
+            _dbConnection.Delete(bluRay);
         }
     }
 }

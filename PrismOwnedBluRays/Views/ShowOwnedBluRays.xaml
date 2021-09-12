@@ -24,9 +24,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="Main menu"
-                Style="{StaticResource buttonStyle}"
-                Command="{Binding GoToMainPageCommand}" />
+        <Button Text="Main menu" Style="{StaticResource buttonStyle}"
+                Command="{Binding GoToMainMenuCmd}" />
 
     </StackLayout>
 

@@ -40,6 +40,9 @@ namespace PrismOwnedBluRays.ViewModels
         private async void SearchForBluRayTitles()
         {
             BluRayTitleReturnedFromSearch = await OmdbApi.GetBluRayTitle(BluRayTitleEnteredByUser);
+            _bluRayRepository.AddBluRay(BluRayTitleReturnedFromSearch);
+
+            await _navigationService.NavigateAsync("ShowOwnedBluRays");
         }
 
         private void GoToMainMenu()

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 
 namespace PrismOwnedBluRays.Models
@@ -7,6 +8,7 @@ namespace PrismOwnedBluRays.Models
     public class BluRay
     {
         #region Properties
+        [PrimaryKey, AutoIncrement]
         public int BluRayId { get; set; }
         [JsonProperty("Title")]
         public string BluRayTitle { get; set; }

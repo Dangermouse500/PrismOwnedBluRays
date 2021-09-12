@@ -4,6 +4,6 @@ namespace PrismOwnedBluRays.Database
 {
     public interface ILocalDataService
     {
-        SQLiteConnection GetConnection();
+        SQLiteConnection SetupDatabaseAndGetConnection();
     }
 }

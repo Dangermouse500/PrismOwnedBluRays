@@ -22,10 +22,8 @@ namespace PrismOwnedBluRays.ViewModels
             }
         }
 
-        //private DelegateCommand _navigateCommand;
-
-        //public DelegateCommand NavigateCommand =>
-        //    _navigateCommand ?? (_navigateCommand = new DelegateCommand(ExecuteNavigateCommand));
+        public DelegateCommand GoToMainMenuCmd { get; set; }
+        //public DelegateCommand DeleteBluRayCmd { get; set; }
 
         public ShowOwnedBluRaysViewModel(INavigationService navigationService,
                                          IBluRayRepository bluRayRepository)
@@ -33,12 +31,14 @@ namespace PrismOwnedBluRays.ViewModels
             _navigationService = navigationService;
             _bluRayRepository = bluRayRepository;
 
+            GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
+
             OwnedBluRays = new ObservableCollection<BluRay>(_bluRayRepository.GetOwnedBluRays());
         }
 
-        //private async void ExecuteNavigateCommand()
-        //{
-        //    await _navigationService.GoBackAsync();
-        //}
+        private void GoToMainMenu()
+        {
+            _navigationService.NavigateAsync("MainPage");
+        }
     }
 }

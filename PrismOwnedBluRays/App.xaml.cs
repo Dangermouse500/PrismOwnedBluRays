@@ -3,6 +3,7 @@ using Prism.Ioc;
 using PrismOwnedBluRays.Repositories;
 using PrismOwnedBluRays.ViewModels;
 using PrismOwnedBluRays.Views;
+using SQLite;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;

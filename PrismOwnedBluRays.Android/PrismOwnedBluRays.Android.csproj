@@ -69,7 +69,6 @@
     <Compile Include="Database\SqliteDataService.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Models\BluRay.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <LinkDescription Include="LinkerSettings.xml" />

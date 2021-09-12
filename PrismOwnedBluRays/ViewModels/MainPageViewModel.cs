@@ -1,6 +1,8 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using PrismOwnedBluRays.Database;
 using PrismOwnedBluRays.Repositories;
+using Xamarin.Forms;
 
 namespace PrismOwnedBluRays.ViewModels
 {
