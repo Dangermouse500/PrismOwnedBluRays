@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace PrismOwnedBluRays.Models
+namespace PrismOwnedBluRays.AndroidProject.Models
 {
     public class BluRay
     {

@@ -1,10 +1,11 @@
-﻿using PrismOwnedBluRays.Database;
+﻿using PrismOwnedBluRays.AndroidProject.Database;
+using PrismOwnedBluRays.Database;
 using SQLite;
 using System.IO;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SqliteDataService))]
-namespace PrismOwnedBluRays.Database
+namespace PrismOwnedBluRays.AndroidProject.Database
 {
     public class SqliteDataService : ILocalDataService
     {
