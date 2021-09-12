@@ -10,22 +10,6 @@ namespace PrismOwnedBluRays.API
 {
     public class OmdbApi
     {
-        public static async Task<List<BluRay>> GetAllBluRayTitles(string searchTerm)
-        {
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-
-            var responseMessage = await httpClient.GetAsync(string.Format("https://www.omdbapi.com/?t={0}&apikey=f40cfcaa", searchTerm));
-
-            if (!responseMessage.IsSuccessStatusCode) return null;
-
-            var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            var blurays = JsonConvert.DeserializeObject<IEnumerable<BluRay>>(jsonResult);
-
-            return blurays.ToList();
-        }
-
         public static async Task<BluRay> GetBluRayTitle(string searchTerm)
         {
             HttpClient httpClient = new HttpClient();
@@ -37,7 +21,6 @@ namespace PrismOwnedBluRays.API
 
             var jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            //var blurays = JsonConvert.DeserializeObject<IEnumerable<BluRay>>(jsonResult);
             var blurays = JsonConvert.DeserializeObject<BluRay>(jsonResult);
 
             return blurays;

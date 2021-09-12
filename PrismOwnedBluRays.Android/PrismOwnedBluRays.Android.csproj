@@ -66,8 +66,10 @@
     <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\SqliteDataService.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\BluRay.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <LinkDescription Include="LinkerSettings.xml" />
