@@ -45,6 +45,9 @@ namespace PrismOwnedBluRays.ViewModels
             await _navigationService.NavigateAsync("ShowOwnedBluRays");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void GoToMainMenu()
         {
             _navigationService.NavigateAsync("MainPage");
