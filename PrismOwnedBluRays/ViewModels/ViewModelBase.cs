@@ -1,11 +1,13 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
 using PrismOwnedBluRays.Repositories;
+using System.Linq;
 
 namespace PrismOwnedBluRays.ViewModels
 {
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
+        private const string applicationTitle = "Owned BluRays";
         protected INavigationService NavigationService { get; private set; }
         protected IBluRayRepository BluRayRepositoryService { get; private set; }
 
@@ -17,13 +19,10 @@ namespace PrismOwnedBluRays.ViewModels
         }
 
         public ViewModelBase(INavigationService navigationService,
-                             IBluRayRepository bluRayRepositoryService
-            )
+                             IBluRayRepository bluRayRepositoryService)
         {
             NavigationService = navigationService;
             BluRayRepositoryService = bluRayRepositoryService;
-
-            // Set page title dynamically here if possible?
         }
 
         public virtual void Initialize(INavigationParameters parameters)
@@ -38,7 +37,7 @@ namespace PrismOwnedBluRays.ViewModels
 
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
-
+            Title = parameters.GetValues<string>("Title").ToList().FirstOrDefault() ?? applicationTitle;
         }
 
         public virtual void Destroy()

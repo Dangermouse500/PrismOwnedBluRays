@@ -7,7 +7,7 @@ using PrismOwnedBluRays.Repositories;
 
 namespace PrismOwnedBluRays.ViewModels
 {
-    public class AddBluRayViewModel : BindableBase
+    public class AddBluRayViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
         private IBluRayRepository _bluRayRepository;
@@ -28,6 +28,7 @@ namespace PrismOwnedBluRays.ViewModels
 
         public AddBluRayViewModel(INavigationService navigationService,
                                   IBluRayRepository bluRayRepository)
+            : base(navigationService, bluRayRepository)
         {
             _navigationService = navigationService;
             _bluRayRepository = bluRayRepository;
@@ -42,7 +43,7 @@ namespace PrismOwnedBluRays.ViewModels
             BluRayTitleReturnedFromSearch = await OmdbApi.GetBluRayTitle(BluRayTitleEnteredByUser);
             _bluRayRepository.AddBluRay(BluRayTitleReturnedFromSearch);
 
-            await _navigationService.NavigateAsync("ShowOwnedBluRays");
+            await _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned BluRays" } });
         }
 
         /// <summary>
