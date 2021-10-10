@@ -21,6 +21,11 @@ namespace PrismOwnedBluRays.Repositories
             return _dbConnection.Table<BluRay>().ToList();
         }
 
+        public BluRay GetBluRayDetailsById(int bluRayId)
+        {
+            return _dbConnection.Table<BluRay>().Where(x => x.BluRayId == bluRayId).FirstOrDefault();
+        }
+
         public void AddBluRay(BluRay bluRay)
         {
             _dbConnection.Insert(bluRay);

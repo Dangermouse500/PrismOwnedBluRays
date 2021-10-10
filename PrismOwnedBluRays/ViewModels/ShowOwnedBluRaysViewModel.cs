@@ -1,9 +1,7 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using PrismOwnedBluRays.Models;
 using PrismOwnedBluRays.Repositories;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -25,12 +23,8 @@ namespace PrismOwnedBluRays.ViewModels
             }
         }
 
-        private void OnSelectedPhotosChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnPropertyChanged(e);
-        }
-
         public DelegateCommand GoToMainMenuCmd { get; set; }
+        public Command ShowAllBluRayDetailsCmd { get; set; }
         public Command DeleteBluRayCmd { get; set; }
 
         public ShowOwnedBluRaysViewModel(INavigationService navigationService,
@@ -41,12 +35,21 @@ namespace PrismOwnedBluRays.ViewModels
             _bluRayRepository = bluRayRepository;
 
             GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
+            ShowAllBluRayDetailsCmd = new Command(execute: (bluRay) =>
+            {
+                ShowAllBluRayDetails((BluRay)bluRay);
+            });
             DeleteBluRayCmd = new Command(execute:(bluRay) =>
             {
                 DeleteBluRay((BluRay)bluRay);
             });
 
             OwnedBluRays = new ObservableCollection<BluRay>(_bluRayRepository.GetOwnedBluRays());
+        }
+
+        private void ShowAllBluRayDetails(BluRay bluRay)
+        {
+            _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRayId", bluRay.BluRayId } });//useModalNavigation: true
         }
 
         private void DeleteBluRay(BluRay bluRay)

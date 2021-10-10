@@ -2,12 +2,13 @@
 using Prism.Navigation;
 using PrismOwnedBluRays.Repositories;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace PrismOwnedBluRays.ViewModels
 {
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
-        private const string applicationTitle = "Owned BluRays";
+        private const string applicationTitle = "Blu Ray Catalogue";
         protected INavigationService NavigationService { get; private set; }
         protected IBluRayRepository BluRayRepositoryService { get; private set; }
 

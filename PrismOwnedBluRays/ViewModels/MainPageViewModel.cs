@@ -30,7 +30,7 @@ namespace PrismOwnedBluRays.ViewModels
 
         private void GoToViewOwnedBluRays()
         {
-            _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Show Owned BluRays" } });
+            _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned BluRays" } });
         }
     }    
 }

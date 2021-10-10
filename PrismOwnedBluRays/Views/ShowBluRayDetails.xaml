@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismOwnedBluRays.Views.ShowBluRayDetails"
+             Title="{Binding Title}">
+
+    <StackLayout>
+
+        <Label Text="{Binding BluRayTitle}" />
+        <Label Text="{Binding BluRayDirector}" />
+        <Label Text="{Binding BluRayActors}" />
+        <Label Text="{Binding BluRayGenre}" />
+        <Label Text="{Binding BluRayYearOfRelease}" />
+
+        <Button Text="Save" Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" />
+
+        <Button Text="Cancel" Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" />
+
+        <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" />
+          
+    </StackLayout>
+    
+</ContentPage>
