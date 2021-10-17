@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services.Dialogs;
 using PrismOwnedBluRays.Models;
 using PrismOwnedBluRays.Repositories;
 using System.Linq;
@@ -11,7 +12,12 @@ namespace PrismOwnedBluRays.ViewModels
     {
         private INavigationService _navigationService;
         private IBluRayRepository _bluRayRepository;
+        private readonly IDialogService _dialogService;
         private BluRay bluRayDetail;
+
+        public bool SaveButtonIsVisible { get; set; }
+        public bool CancelButtonIsVisible { get; set; }
+        public bool MainMenuButtonIsVisible { get; set; }
 
         public DelegateCommand SaveBluRayCmd { get; set; }
         public DelegateCommand ReturnToAddBluRayCmd { get; set; }
@@ -23,11 +29,13 @@ namespace PrismOwnedBluRays.ViewModels
         }
 
         public ShowBluRayDetailsViewModel(INavigationService navigationService,
-                                          IBluRayRepository bluRayRepository)
+                                          IBluRayRepository bluRayRepository,
+                                          IDialogService dialogService)
             : base(navigationService, bluRayRepository)
         {
             _navigationService = navigationService;
             _bluRayRepository = bluRayRepository;
+            _dialogService = dialogService;
 
             SaveBluRayCmd = new DelegateCommand(SaveBluRay);
             ReturnToAddBluRayCmd = new DelegateCommand(ReturnToAddBluRay);
@@ -39,22 +47,31 @@ namespace PrismOwnedBluRays.ViewModels
         {
             var bluRayId = parameters.GetValues<int>("BluRayId").ToList().FirstOrDefault();
 
+            // This needs changing as doesn't work - too late after form has been bound
+            SaveButtonIsVisible = (bluRayId == 0);
+            CancelButtonIsVisible = (bluRayId == 0);
+            MainMenuButtonIsVisible = (bluRayId > 0);
+
+            // If a blu-ray exists in our database then show it
             if (bluRayId > 0)
             {
                 BluRayDetail = _bluRayRepository.GetBluRayDetailsById(bluRayId);
             }
             else
             {
+                // This is a blu-ray that the user searched for
                 BluRayDetail = parameters.GetValues<BluRay>("BluRay").ToList().FirstOrDefault();
             }
         }
 
-        // TODO - some type of OnAppearing method which checks - If BluRayDetails.Title Is null then no blu ray found
-        // Also make visible / invisible buttons etc
-
         private void SaveBluRay()
         {
             _bluRayRepository.AddBluRay(BluRayDetail);
+            _dialogService.ShowDialog("OkDialogView", new DialogParameters
+                {
+                    { "Question", "Blu-Ray added successfully." },
+                    { "CloseOnTap", true }
+                });
             _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned BluRays" } });
         }
 

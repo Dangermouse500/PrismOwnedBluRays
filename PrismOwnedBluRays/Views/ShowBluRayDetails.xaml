@@ -23,10 +23,13 @@
             <Label Text="{Binding BluRayDetail.BluRayDirector}" HorizontalOptions="Center" FontSize="Title" />
         </StackLayout>
 
-        <Button Text="Save" Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0"/>
+        <Button Text="Save" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0"
+                Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" IsVisible="{Binding SaveButtonIsVisible}" />
 
-        <Button Text="Cancel" Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="1"/>
+        <Button Text="Cancel" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" IsVisible="{Binding CancelButtonIsVisible}" />
 
-        <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="2"/>
+        <Button Text="Main menu" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="2"
+                Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" IsVisible="{Binding MainMenuButtonIsVisible}" />
     </Grid>
 </ContentPage>

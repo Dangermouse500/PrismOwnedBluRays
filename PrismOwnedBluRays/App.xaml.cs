@@ -1,9 +1,9 @@
 using Prism;
 using Prism.Ioc;
+using PrismOwnedBluRays.Dialogs;
 using PrismOwnedBluRays.Repositories;
 using PrismOwnedBluRays.ViewModels;
 using PrismOwnedBluRays.Views;
-using SQLite;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
@@ -29,6 +29,8 @@ namespace PrismOwnedBluRays
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterSingleton<IBluRayRepository, BluRayRepository>();
+
+            containerRegistry.RegisterDialog<OkDialogView>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();

@@ -1,10 +1,10 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using Prism.Services.Dialogs;
 using PrismOwnedBluRays.API;
 using PrismOwnedBluRays.Models;
 using PrismOwnedBluRays.Repositories;
 using System;
-using Xamarin.Forms;
 
 namespace PrismOwnedBluRays.ViewModels
 {
@@ -12,6 +12,7 @@ namespace PrismOwnedBluRays.ViewModels
     {
         private INavigationService _navigationService;
         private IBluRayRepository _bluRayRepository;
+        private readonly IDialogService _dialogService;
         private string _bluRayTitleEnteredByUser;
         public string BluRayTitleEnteredByUser
         {
@@ -30,11 +31,13 @@ namespace PrismOwnedBluRays.ViewModels
         public Action<string> ShowMessage;
 
         public AddBluRayViewModel(INavigationService navigationService,
-                                  IBluRayRepository bluRayRepository)
+                                  IBluRayRepository bluRayRepository,
+                                  IDialogService dialogService)
             : base(navigationService, bluRayRepository)
         {
             _navigationService = navigationService;
             _bluRayRepository = bluRayRepository;
+            _dialogService = dialogService;
 
             GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
 
@@ -46,16 +49,19 @@ namespace PrismOwnedBluRays.ViewModels
             BluRayTitleReturnedFromSearch = await OmdbApi.GetBluRayTitle(BluRayTitleEnteredByUser);
             if (BluRayTitleReturnedFromSearch.BluRayTitle == null)
             {
-                
+                _dialogService.ShowDialog("OkDialogView", new DialogParameters
+                {
+                    { "Question", "No Blu-Ray found, please try again." },
+                    { "CloseOnTap", true }
+                });
             }
             else
-            {
+            {                
                 await _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRay", BluRayTitleReturnedFromSearch } });
             }
             //useModalNavigation: true
         }
-
-        
+                
         /// <summary>
         /// 
         /// </summary>
