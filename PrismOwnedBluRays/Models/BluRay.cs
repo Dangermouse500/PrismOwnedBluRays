@@ -20,6 +20,10 @@ namespace PrismOwnedBluRays.Models
         public string BluRayGenre { get; set; }
         [JsonProperty("Year")]
         public string BluRayYearOfRelease { get; set; }
+        [JsonProperty("Poster")]
+        public string BluRayPoster { get; set; }
+        [JsonProperty("Plot")]
+        public string BluRayPlot { get; set; }
         #endregion
     }
 }
