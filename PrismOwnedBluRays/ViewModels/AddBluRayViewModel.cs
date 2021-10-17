@@ -1,9 +1,10 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using PrismOwnedBluRays.API;
 using PrismOwnedBluRays.Models;
 using PrismOwnedBluRays.Repositories;
+using System;
+using Xamarin.Forms;
 
 namespace PrismOwnedBluRays.ViewModels
 {
@@ -26,6 +27,8 @@ namespace PrismOwnedBluRays.ViewModels
 
         public BluRay BluRayTitleReturnedFromSearch { get; set; }
 
+        public Action<string> ShowMessage;
+
         public AddBluRayViewModel(INavigationService navigationService,
                                   IBluRayRepository bluRayRepository)
             : base(navigationService, bluRayRepository)
@@ -41,9 +44,18 @@ namespace PrismOwnedBluRays.ViewModels
         private async void SearchForBluRayTitles()
         {
             BluRayTitleReturnedFromSearch = await OmdbApi.GetBluRayTitle(BluRayTitleEnteredByUser);
-            await _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRay", BluRayTitleReturnedFromSearch } });//useModalNavigation: true
+            if (BluRayTitleReturnedFromSearch.BluRayTitle == null)
+            {
+                
+            }
+            else
+            {
+                await _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRay", BluRayTitleReturnedFromSearch } });
+            }
+            //useModalNavigation: true
         }
 
+        
         /// <summary>
         /// 
         /// </summary>

@@ -5,10 +5,10 @@
 TODO
 ====
 
-1. GUI update so looks nice
+1. GUI update so looks nice - Rohan
 2. Adding page after search for new film to add - Dan
 3. Adding option from grid to show more film details - Dan (modal maybe?)
-4. Sort navigation thing out at top the arrows?
+4. Sort navigation thing out at top the arrows? - Rohan
 5. Message to say Blu Ray Deletion successful which fades out(?)
 6. Message to say Blu Ray Added which fades out(?)
 7. Change my stupid page navigation(?)

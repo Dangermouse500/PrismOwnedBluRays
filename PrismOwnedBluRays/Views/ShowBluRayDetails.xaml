@@ -6,20 +6,27 @@
              x:Class="PrismOwnedBluRays.Views.ShowBluRayDetails"
              Title="{Binding Title}">
 
-    <StackLayout>
 
-        <Label Text="{Binding BluRayTitle}" />
-        <Label Text="{Binding BluRayDirector}" />
-        <Label Text="{Binding BluRayActors}" />
-        <Label Text="{Binding BluRayGenre}" />
-        <Label Text="{Binding BluRayYearOfRelease}" />
+    <Grid x:Name="Item">        <Grid.RowDefinitions>            <RowDefinition Height="0.7*" />            <RowDefinition Height="0.3*" />        </Grid.RowDefinitions>        <Grid.ColumnDefinitions>            <ColumnDefinition Width="0.3*" />            <ColumnDefinition Width="0.3*" />            <ColumnDefinition Width="0.3*" />        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Label HorizontalOptions="Center" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding BluRayDetail.BluRayTitle}" FontSize="Header"/>
+                        <Span Text=" "/>
+                        <Span Text="{Binding BluRayDetail.BluRayYearOfRelease, StringFormat='({0})'}" FontSize="Title"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="{Binding BluRayDetail.BluRayGenre}" HorizontalOptions="Center" FontSize="Title"/>
+            <Label Text="{Binding BluRayDetail.BluRayActors}" HorizontalOptions="Center" FontSize="Title"/>
+            <Label Text="{Binding BluRayDetail.BluRayDirector}" HorizontalOptions="Center" FontSize="Title" />
+        </StackLayout>
 
-        <Button Text="Save" Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" />
+        <Button Text="Save" Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0"/>
 
-        <Button Text="Cancel" Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" />
+        <Button Text="Cancel" Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="1"/>
 
-        <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" />
-          
-    </StackLayout>
-    
+        <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="2"/>
+    </Grid>
 </ContentPage>

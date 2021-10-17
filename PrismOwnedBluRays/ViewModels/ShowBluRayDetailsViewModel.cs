@@ -11,11 +11,16 @@ namespace PrismOwnedBluRays.ViewModels
     {
         private INavigationService _navigationService;
         private IBluRayRepository _bluRayRepository;
-        public BluRay BluRayDetails;
-        
+        private BluRay bluRayDetail;
+
         public DelegateCommand SaveBluRayCmd { get; set; }
         public DelegateCommand ReturnToAddBluRayCmd { get; set; }
         public DelegateCommand GoToMainMenuCmd { get; set; }
+        public BluRay BluRayDetail
+        {
+            get => bluRayDetail;
+            set => SetProperty(ref bluRayDetail, value);
+        }
 
         public ShowBluRayDetailsViewModel(INavigationService navigationService,
                                           IBluRayRepository bluRayRepository)
@@ -33,13 +38,15 @@ namespace PrismOwnedBluRays.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             var bluRayId = parameters.GetValues<int>("BluRayId").ToList().FirstOrDefault();
-            
+
             if (bluRayId > 0)
             {
-                BluRayDetails = _bluRayRepository.GetBluRayDetailsById(bluRayId);
+                BluRayDetail = _bluRayRepository.GetBluRayDetailsById(bluRayId);
             }
             else
-                BluRayDetails = parameters.GetValues<BluRay>("BluRay").ToList().FirstOrDefault();
+            {
+                BluRayDetail = parameters.GetValues<BluRay>("BluRay").ToList().FirstOrDefault();
+            }
         }
 
         // TODO - some type of OnAppearing method which checks - If BluRayDetails.Title Is null then no blu ray found
@@ -47,7 +54,7 @@ namespace PrismOwnedBluRays.ViewModels
 
         private void SaveBluRay()
         {
-            _bluRayRepository.AddBluRay(BluRayDetails);
+            _bluRayRepository.AddBluRay(BluRayDetail);
             _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned BluRays" } });
         }
 
@@ -55,7 +62,7 @@ namespace PrismOwnedBluRays.ViewModels
         {
             _navigationService.NavigateAsync("AddBluRay", new NavigationParameters { { "Title", "Add BluRay" } });
         }
-        
+
         private void GoToMainMenu()
         {
             _navigationService.NavigateAsync("MainPage");
