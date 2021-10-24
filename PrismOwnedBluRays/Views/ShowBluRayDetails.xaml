@@ -21,6 +21,7 @@
             <Label Text="{Binding BluRayDetail.BluRayGenre}" HorizontalOptions="Center" FontSize="Title"/>
             <Label Text="{Binding BluRayDetail.BluRayActors}" HorizontalOptions="Center" FontSize="Title"/>
             <Label Text="{Binding BluRayDetail.BluRayDirector}" HorizontalOptions="Center" FontSize="Title" />
+            <Image Source="{Binding BluRayDetail.BluRayPoster}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
         </StackLayout>
 
         <Button Text="Save" Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0"/>
