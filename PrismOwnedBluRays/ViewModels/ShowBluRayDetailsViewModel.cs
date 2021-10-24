@@ -14,10 +14,13 @@ namespace PrismOwnedBluRays.ViewModels
         private IBluRayRepository _bluRayRepository;
         private readonly IDialogService _dialogService;
         private BluRay bluRayDetail;
+        private bool saveModeVisibility;
 
-        public bool SaveButtonIsVisible { get; set; }
-        public bool CancelButtonIsVisible { get; set; }
-        public bool MainMenuButtonIsVisible { get; set; }
+        public bool SaveModeVisible
+        {
+            get => saveModeVisibility;
+            set => SetProperty(ref saveModeVisibility, value);
+        }
 
         public DelegateCommand SaveBluRayCmd { get; set; }
         public DelegateCommand ReturnToAddBluRayCmd { get; set; }
@@ -47,10 +50,7 @@ namespace PrismOwnedBluRays.ViewModels
         {
             var bluRayId = parameters.GetValues<int>("BluRayId").ToList().FirstOrDefault();
 
-            // This needs changing as doesn't work - too late after form has been bound
-            SaveButtonIsVisible = (bluRayId == 0);
-            CancelButtonIsVisible = (bluRayId == 0);
-            MainMenuButtonIsVisible = (bluRayId > 0);
+            SaveModeVisible = (bluRayId == 0);
 
             // If a blu-ray exists in our database then show it
             if (bluRayId > 0)

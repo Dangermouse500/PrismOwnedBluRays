@@ -2,6 +2,7 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="http://prismlibrary.com"
+                        xmlns:Converters="clr-namespace:PrismOwnedBluRays.Converters"
                         x:Class="PrismOwnedBluRays.App">
     
   <Application.Resources>
@@ -14,10 +15,12 @@
                 <Setter Property="BackgroundColor" Value="#3498db" />
                 <Setter Property="TextColor" Value="#FFFFFF" />
                 <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="WidthRequest" Value="160" />
+                <Setter Property="CornerRadius" Value="20" />
             </Style>
-            <x:String x:Key="DeleteIcon">&#x26D4;</x:String>
-            <x:String x:Key="InformationIcon">&#x1F6C8;</x:String>
+            <x:String x:Key="DeleteIcon">&#128465;</x:String>
+            <x:String x:Key="InformationIcon">&#x2139;</x:String>
+            <Converters:Inverter x:Key="InvertBool" />
 
         </ResourceDictionary>
 

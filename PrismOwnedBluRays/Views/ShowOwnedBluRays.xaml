@@ -3,25 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="PrismOwnedBluRays.Views.ShowOwnedBluRays"
-             
+             x:Class="PrismOwnedBluRays.Views.ShowOwnedBluRays"             
              Title="{Binding Title}">
 
     <StackLayout Margin="20, 35, 20, 25">
 
         <ListView x:Name="TableOwnedBluRays" ItemsSource="{Binding OwnedBluRays}" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
-                <DataTemplate>                    
+                <DataTemplate>
                     <ViewCell>
-                        <Grid x:Name="Item">                            <Grid.RowDefinitions>                                <RowDefinition Height="0.5*" />                                <RowDefinition Height="0.5*" />                            </Grid.RowDefinitions>                            <Grid.ColumnDefinitions>                                <ColumnDefinition Width="0.3*" />                                <ColumnDefinition Width="0.4*" />                                <ColumnDefinition Width="0.15*" />                                <ColumnDefinition Width="0.15*" />                            </Grid.ColumnDefinitions>
+                        <Grid x:Name="Item" Padding="2">                            <Grid.RowDefinitions>                                <RowDefinition Height="0.5*" />                                <RowDefinition Height="0.5*" />                            </Grid.RowDefinitions>                            <Grid.ColumnDefinitions>                                <ColumnDefinition Width="0.3*" />                                <ColumnDefinition Width="0.4*" />                                <ColumnDefinition Width="0.15*" />                                <ColumnDefinition Width="0.15*" />                            </Grid.ColumnDefinitions>
 
-                            <Image Source="{Binding BluRayPoster}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />                            <Label Text="{Binding BluRayTitle}" Grid.Row="0" Grid.Column="1" />                            <Label Text="{Binding BluRayYearOfRelease, StringFormat='Year: {0}'}" Grid.Row="1" Grid.Column="1" />                            <Label Text="{StaticResource InformationIcon}" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" >
+                            <Image Source="{Binding BluRayPoster}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />                            <Label Text="{Binding BluRayTitle}" Grid.Row="0" Grid.Column="1" />                            <Label Text="{Binding BluRayYearOfRelease, StringFormat='Year: {0}'}" Grid.Row="1" Grid.Column="1" />                            <Label Text="{StaticResource InformationIcon}" FontSize="Large" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ShowAllBluRayDetailsCmd}" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" BindingContext="{Binding Source={x:Reference TableOwnedBluRays}, Path=BindingContext}"/>
                                 </Label.GestureRecognizers>
                             </Label>
 
-                            <Label Text="{StaticResource DeleteIcon}" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2">
+                            <Label Text="{StaticResource DeleteIcon}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DeleteBluRayCmd}"
                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
@@ -35,8 +34,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="Main menu" Style="{StaticResource buttonStyle}"
-                Command="{Binding GoToMainMenuCmd}" />
+        <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" />
 
     </StackLayout>
 

@@ -2,35 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
+             xmlns:Converters="clr-namespace:PrismOwnedBluRays.Converters"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismOwnedBluRays.Views.ShowBluRayDetails"
              Title="{Binding Title}">
-
 
     <Grid x:Name="Item">        <Grid.RowDefinitions>            <RowDefinition Height="0.7*" />            <RowDefinition Height="0.3*" />        </Grid.RowDefinitions>        <Grid.ColumnDefinitions>            <ColumnDefinition Width="0.3*" />            <ColumnDefinition Width="0.3*" />            <ColumnDefinition Width="0.3*" />        </Grid.ColumnDefinitions>
         <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <Label HorizontalOptions="Center" >
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{Binding BluRayDetail.BluRayTitle}" FontSize="Header"/>
+                        <Span Text="{Binding BluRayDetail.BluRayTitle}" FontSize="Title"/>
                         <Span Text=" "/>
-                        <Span Text="{Binding BluRayDetail.BluRayYearOfRelease, StringFormat='({0})'}" FontSize="Title"/>
+                        <Span Text="{Binding BluRayDetail.BluRayYearOfRelease, StringFormat='({0})'}" FontSize="Medium"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label Text="{Binding BluRayDetail.BluRayGenre}" HorizontalOptions="Center" FontSize="Title"/>
-            <Label Text="{Binding BluRayDetail.BluRayActors}" HorizontalOptions="Center" FontSize="Title"/>
-            <Label Text="{Binding BluRayDetail.BluRayDirector}" HorizontalOptions="Center" FontSize="Title" />
+            <Label Text="{Binding BluRayDetail.BluRayGenre, StringFormat='Genre(s): {0}'}" HorizontalOptions="Center" FontSize="Small"/>
+            <Label Text="{Binding BluRayDetail.BluRayActors, StringFormat='Actor(s): {0}'}" HorizontalOptions="Center" FontSize="Small"/>
+            <Label Text="{Binding BluRayDetail.BluRayDirector, StringFormat='Director: {0}'}" HorizontalOptions="Center" FontSize="Small" />
             <Image Source="{Binding BluRayDetail.BluRayPoster}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
         </StackLayout>
 
-        <Button Text="Save" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0"
-                Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" IsVisible="{Binding SaveButtonIsVisible}" />
+        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center"
+                     IsVisible="{Binding SaveModeVisible}">
+            <Button Text="Save" CornerRadius="20"
+                Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" />
 
-        <Button Text="Cancel" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="1"
-                Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" IsVisible="{Binding CancelButtonIsVisible}" />
-
-        <Button Text="Main menu" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="2"
-                Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" IsVisible="{Binding MainMenuButtonIsVisible}" />
+            <Button Text="Cancel" CornerRadius="20"
+                Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" />
+        </StackLayout>
+        
+        <Button Text="Main menu" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" IsVisible="{Binding SaveModeVisible, Converter={StaticResource InvertBool}}" />
     </Grid>
 </ContentPage>
