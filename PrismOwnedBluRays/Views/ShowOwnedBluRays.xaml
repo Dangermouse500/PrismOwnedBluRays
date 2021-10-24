@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="PrismOwnedBluRays.Views.ShowOwnedBluRays"
+             
              Title="{Binding Title}">
 
     <StackLayout Margin="20, 35, 20, 25">
@@ -14,12 +15,12 @@
                     <ViewCell>
                         <Grid x:Name="Item">                            <Grid.RowDefinitions>                                <RowDefinition Height="0.5*" />                                <RowDefinition Height="0.5*" />                            </Grid.RowDefinitions>                            <Grid.ColumnDefinitions>                                <ColumnDefinition Width="0.3*" />                                <ColumnDefinition Width="0.4*" />                                <ColumnDefinition Width="0.15*" />                                <ColumnDefinition Width="0.15*" />                            </Grid.ColumnDefinitions>
 
-                            <Image Source="{Binding BluRayPoster}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />                            <Label Text="{Binding BluRayTitle}" Grid.Row="0" Grid.Column="1" />                            <Label Text="{Binding BluRayYearOfRelease, StringFormat='Year: {0}'}" Grid.Row="1" Grid.Column="1" />                            <Button Text="i" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                            <Image Source="{Binding BluRayPoster}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />                            <Label Text="{Binding BluRayTitle}" Grid.Row="0" Grid.Column="1" />                            <Label Text="{Binding BluRayYearOfRelease, StringFormat='Year: {0}'}" Grid.Row="1" Grid.Column="1" />                            <Button Text="{StaticResource InformationIcon}" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                                     Command="{Binding ShowAllBluRayDetailsCmd}"
                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
                                     BindingContext="{Binding Source={x:Reference TableOwnedBluRays}, Path=BindingContext}" />
 
-                            <Button Text="-" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"                                    Command="{Binding DeleteBluRayCmd}"
+                            <Button Text="{StaticResource DeleteIcon}" Style="{StaticResource buttonStyle}" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"                                    Command="{Binding DeleteBluRayCmd}"
                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
                                     BindingContext="{Binding Source={x:Reference TableOwnedBluRays}, Path=BindingContext}" />
                         </Grid>

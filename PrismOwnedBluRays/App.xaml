@@ -16,7 +16,9 @@
                 <Setter Property="HeightRequest" Value="50" />
                 <Setter Property="WidthRequest" Value="200" />
             </Style>
-            
+            <x:String x:Key="DeleteIcon">&#x26D4;</x:String>
+            <x:String x:Key="InformationIcon">&#x1F6C8;</x:String>
+
         </ResourceDictionary>
 
   </Application.Resources>
