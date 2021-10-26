@@ -44,6 +44,8 @@ namespace PrismOwnedBluRays.ViewModels
             ReturnToAddBluRayCmd = new DelegateCommand(ReturnToAddBluRay);
 
             GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
+
+            Title = "Blu-Ray details";
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)

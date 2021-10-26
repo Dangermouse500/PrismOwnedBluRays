@@ -9,7 +9,7 @@
 
     <Grid x:Name="Item">        <Grid.RowDefinitions>            <RowDefinition Height="0.7*" />            <RowDefinition Height="0.3*" />        </Grid.RowDefinitions>        <Grid.ColumnDefinitions>            <ColumnDefinition Width="0.3*" />            <ColumnDefinition Width="0.3*" />            <ColumnDefinition Width="0.3*" />        </Grid.ColumnDefinitions>
         <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-            <Label HorizontalOptions="Center" >
+            <Label HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{Binding BluRayDetail.BluRayTitle}" FontSize="Title"/>
@@ -19,18 +19,16 @@
                 </Label.FormattedText>
             </Label>
             <Label Text="{Binding BluRayDetail.BluRayGenre, StringFormat='Genre(s): {0}'}" HorizontalOptions="Center" FontSize="Small"/>
-            <Label Text="{Binding BluRayDetail.BluRayActors, StringFormat='Actor(s): {0}'}" HorizontalOptions="Center" FontSize="Small"/>
+            <Label Text="{Binding BluRayDetail.BluRayActors, StringFormat='Actor(s): {0}'}" HorizontalOptions="Center" FontSize="Small" Margin="25, 0, 0, 0"/>
             <Label Text="{Binding BluRayDetail.BluRayDirector, StringFormat='Director: {0}'}" HorizontalOptions="Center" FontSize="Small" />
             <Image Source="{Binding BluRayDetail.BluRayPoster}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
         </StackLayout>
 
         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center"
                      IsVisible="{Binding SaveModeVisible}">
-            <Button Text="Save" CornerRadius="20"
-                Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" />
+            <Button Text="Save" CornerRadius="20" Style="{StaticResource buttonStyle}" Command="{Binding SaveBluRayCmd}" />
 
-            <Button Text="Cancel" CornerRadius="20"
-                Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" />
+            <Button Text="Cancel" CornerRadius="20" Style="{StaticResource buttonStyle}" Command="{Binding ReturnToAddBluRayCmd}" />
         </StackLayout>
         
         <Button Text="Main menu" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"

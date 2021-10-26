@@ -5,11 +5,6 @@
              xmlns:prism="http://prismlibrary.com"
              Title="{Binding Title}">
 
-    <Grid>        <Grid.RowDefinitions>            <RowDefinition Height="0.67*"/>            <RowDefinition Height="0.33*"/>        </Grid.RowDefinitions>        <Grid.ColumnDefinitions>            <ColumnDefinition Width="0.5*"/>            <ColumnDefinition Width="0.5*"/>        </Grid.ColumnDefinitions>        <Image Source="blu_ray_logo.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50, 20, 50, 0" />        <Label Text="&#x2B;" FontSize="Header" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#3498db">            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GoToAddBluRayCmd}" />
-            </Label.GestureRecognizers>        </Label>        <Label Text="&#x1F4C1;" FontSize="Title" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#3498db">            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GoToViewOwnedBluRaysCmd}" />
-            </Label.GestureRecognizers>        </Label>            </Grid>
-
+    <Grid>        <Grid.RowDefinitions>            <RowDefinition Height="0.67*" />            <RowDefinition Height="0.33*" />        </Grid.RowDefinitions>        <Grid.ColumnDefinitions>            <ColumnDefinition Width="0.5*"/>            <ColumnDefinition Width="0.5*"/>        </Grid.ColumnDefinitions>        <Image Source="blu_ray_logo.png" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"               HorizontalOptions="Center" VerticalOptions="Center" />        <Image Source="add_blu_ray.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="10, 10, 10, 10">            <Image.GestureRecognizers>                <TapGestureRecognizer Command="{Binding GoToAddBluRayCmd}" />            </Image.GestureRecognizers>        </Image>        <Image Source="blu_ray_catalogue.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Margin="10, 20, 10, 20">            <Image.GestureRecognizers>                <TapGestureRecognizer Command="{Binding GoToViewOwnedBluRaysCmd}" />            </Image.GestureRecognizers>        </Image>            </Grid>
 
 </ContentPage>

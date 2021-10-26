@@ -212,6 +212,11 @@
   <ItemGroup>
     <BundleResource Include="Resources\blu_ray_logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\add_blu_ray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\blu_ray_catalogue.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -8,8 +8,8 @@
 
     <StackLayout Margin="15, 15, 5, 25">
 
-        <Label Text="Please enter the title of the blu-ray below" />
-        <Entry Text="{Binding BluRayTitleEnteredByUser}" />
+        <Label Text="Please enter the title of the blu-ray below" FontSize="Medium" Margin="0, 20, 0, 20" />
+        <Entry Text="{Binding BluRayTitleEnteredByUser}" Margin="0, 0, 0, 20" />
 
         <StackLayout Orientation="Horizontal">
 
