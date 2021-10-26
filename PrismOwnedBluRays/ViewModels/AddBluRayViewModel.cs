@@ -59,7 +59,6 @@ namespace PrismOwnedBluRays.ViewModels
             {                
                 await _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRay", BluRayTitleReturnedFromSearch } });
             }
-            //useModalNavigation: true
         }
                 
         /// <summary>
@@ -67,7 +66,7 @@ namespace PrismOwnedBluRays.ViewModels
         /// </summary>
         private void GoToMainMenu()
         {
-            _navigationService.NavigateAsync("MainPage");
+            _navigationService.GoBackToRootAsync();
         }
     }
 }

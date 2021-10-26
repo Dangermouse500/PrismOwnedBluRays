@@ -5,8 +5,6 @@ TODO
 ====
 
 1. GUI update so looks nice throughout
-2. Sort navigation thing out at top the arrows - Rohan
-3. Change my stupid page title navigation(?)
-4. OnAppearing / ContentPage stuff - necessary(?)
+2. Change my stupid page title navigation(?)
 
 Prism code examples - https://github.com/PrismLibrary/Prism-Samples-Forms

@@ -60,7 +60,7 @@ namespace PrismOwnedBluRays.ViewModels
 
         private void GoToMainMenu()
         {
-            _navigationService.NavigateAsync("MainPage");
+            _navigationService.GoBackToRootAsync();
         }
     }
 }

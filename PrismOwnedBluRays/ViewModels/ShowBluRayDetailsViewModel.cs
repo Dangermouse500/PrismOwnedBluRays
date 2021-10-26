@@ -72,17 +72,17 @@ namespace PrismOwnedBluRays.ViewModels
                     { "Question", "Blu-Ray added successfully." },
                     { "CloseOnTap", true }
                 });
-            _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned BluRays" } });
+            _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned Blu-Rays" } });
         }
 
         private void ReturnToAddBluRay()
         {
-            _navigationService.NavigateAsync("AddBluRay", new NavigationParameters { { "Title", "Add BluRay" } });
+            _navigationService.NavigateAsync("AddBluRay", new NavigationParameters { { "Title", "Add Blu-Ray" } });
         }
 
         private void GoToMainMenu()
         {
-            _navigationService.NavigateAsync("MainPage");
+            _navigationService.GoBackToRootAsync();
         }
     }
 }

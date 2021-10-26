@@ -6,16 +6,20 @@
              x:Class="PrismOwnedBluRays.Views.AddBluRay"
              Title="{Binding Title}">
 
-    <StackLayout Margin="20, 35, 20, 25">
+    <StackLayout Margin="15, 15, 5, 25">
 
-        <Label Text="Please enter the title of the blu ray below" />
+        <Label Text="Please enter the title of the blu-ray below" />
         <Entry Text="{Binding BluRayTitleEnteredByUser}" />
 
-        <Button Text="Find" Style="{StaticResource buttonStyle}"
+        <StackLayout Orientation="Horizontal">
+
+            <Button Text="Find" Style="{StaticResource buttonStyle}"
                 Command="{Binding SearchForBluRayTitleCmd}" />
 
-        <Button Text="Main menu" Style="{StaticResource buttonStyle}"
+            <Button Text="Main menu" Style="{StaticResource buttonStyle}"
                 Command="{Binding GoToMainMenuCmd}" />
+
+        </StackLayout>
 
     </StackLayout>
 
