@@ -4,3 +4,5 @@ Prism code examples - https://github.com/PrismLibrary/Prism-Samples-Forms
 
 Create icon using - https://www.youtube.com/watch?v=ysWyqP9ADmw
 					Android Asset Studio
+
+Other useful app stuff - https://romannurik.github.io/AndroidAssetStudio/index.html
