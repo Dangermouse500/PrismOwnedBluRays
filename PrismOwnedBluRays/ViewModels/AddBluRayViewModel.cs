@@ -25,6 +25,7 @@ namespace PrismOwnedBluRays.ViewModels
 
         public DelegateCommand GoToMainMenuCmd { get; set; }
         public DelegateCommand SearchForBluRayTitleCmd { get; set; }
+        public DelegateCommand ManuallyEnteredBluRayCmd { get; set; }
 
         public BluRay BluRayTitleReturnedFromSearch { get; set; }
 
@@ -42,6 +43,8 @@ namespace PrismOwnedBluRays.ViewModels
             GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
 
             SearchForBluRayTitleCmd = new DelegateCommand(SearchForBluRayTitles);
+
+            ManuallyEnteredBluRayCmd = new DelegateCommand(ManuallyEnteredBluRay);
         }
 
         private async void SearchForBluRayTitles()
@@ -60,7 +63,32 @@ namespace PrismOwnedBluRays.ViewModels
                 await _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRay", BluRayTitleReturnedFromSearch } });
             }
         }
-                
+        
+        private void ManuallyEnteredBluRay()
+        {
+            if (BluRayTitleEnteredByUser == null || BluRayTitleEnteredByUser.Length == 0)
+            {
+                _dialogService.ShowDialog("OkDialogView", new DialogParameters
+                {
+                    { "Question", "Please enter a blu-ray title." },
+                    { "CloseOnTap", true }
+                });
+
+                return;
+            }
+
+            BluRay b = new BluRay();
+            b.BluRayTitle = BluRayTitleEnteredByUser;            
+            _bluRayRepository.AddBluRay(b);
+
+            _dialogService.ShowDialog("OkDialogView", new DialogParameters
+                {
+                    { "Question", "Blu-Ray added successfully." },
+                    { "CloseOnTap", true }
+                });
+            _navigationService.NavigateAsync("ShowOwnedBluRays", new NavigationParameters { { "Title", "Owned Blu-Rays" } });
+        }
+
         /// <summary>
         /// 
         /// </summary>

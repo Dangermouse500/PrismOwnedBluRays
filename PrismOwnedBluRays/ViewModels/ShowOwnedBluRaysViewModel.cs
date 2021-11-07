@@ -26,6 +26,7 @@ namespace PrismOwnedBluRays.ViewModels
         public DelegateCommand GoToMainMenuCmd { get; set; }
         public Command ShowAllBluRayDetailsCmd { get; set; }
         public Command DeleteBluRayCmd { get; set; }
+        public DelegateCommand AddAnotherBluRayCmd { get; set; }
 
         public ShowOwnedBluRaysViewModel(INavigationService navigationService,
                                          IBluRayRepository bluRayRepository)
@@ -34,6 +35,7 @@ namespace PrismOwnedBluRays.ViewModels
             _navigationService = navigationService;
             _bluRayRepository = bluRayRepository;
 
+            AddAnotherBluRayCmd = new DelegateCommand(GoToAddBluRay);
             GoToMainMenuCmd = new DelegateCommand(GoToMainMenu);
             ShowAllBluRayDetailsCmd = new Command(execute: (bluRay) =>
             {
@@ -49,13 +51,18 @@ namespace PrismOwnedBluRays.ViewModels
 
         private void ShowAllBluRayDetails(BluRay bluRay)
         {
-            _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRayId", bluRay.BluRayId } });//useModalNavigation: true
+            _navigationService.NavigateAsync("ShowBluRayDetails", new NavigationParameters { { "BluRayId", bluRay.BluRayId } });
         }
 
         private void DeleteBluRay(BluRay bluRay)
         {
             _bluRayRepository.DeleteBluRay(bluRay);
             OwnedBluRays.Remove(bluRay);
+        }
+
+        private void GoToAddBluRay()
+        {
+            _navigationService.NavigateAsync("AddBluRay", new NavigationParameters { { "Title", "Add Blu-Ray" } });
         }
 
         private void GoToMainMenu()

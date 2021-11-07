@@ -14,12 +14,15 @@
         <StackLayout Orientation="Horizontal">
 
             <Button Text="Find" Style="{StaticResource buttonStyle}"
-                Command="{Binding SearchForBluRayTitleCmd}" />
+                    Command="{Binding SearchForBluRayTitleCmd}" />
 
             <Button Text="Main menu" Style="{StaticResource buttonStyle}"
-                Command="{Binding GoToMainMenuCmd}" />
+                    Command="{Binding GoToMainMenuCmd}" />
 
         </StackLayout>
+
+        <Button Text="Manually enter this blu-ray" Style="{StaticResource buttonStyle}"
+                Command="{Binding ManuallyEnteredBluRayCmd}" />
 
     </StackLayout>
 

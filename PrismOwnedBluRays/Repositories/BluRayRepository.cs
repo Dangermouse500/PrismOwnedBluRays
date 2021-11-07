@@ -18,7 +18,7 @@ namespace PrismOwnedBluRays.Repositories
 
         public List<BluRay> GetOwnedBluRays()
         {
-            return _dbConnection.Table<BluRay>().ToList();
+            return _dbConnection.Table<BluRay>().OrderBy(b => b.BluRayTitle).ToList();
         }
 
         public BluRay GetBluRayDetailsById(int bluRayId)

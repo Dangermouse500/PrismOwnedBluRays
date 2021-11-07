@@ -34,7 +34,13 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" />
+        <StackLayout Orientation="Horizontal">
+
+            <Button Text="Add another" Style="{StaticResource buttonStyle}" Command="{Binding AddAnotherBluRayCmd}" />
+            
+            <Button Text="Main menu" Style="{StaticResource buttonStyle}" Command="{Binding GoToMainMenuCmd}" />
+
+        </StackLayout>
 
     </StackLayout>
 
